@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+  <!DOCTYPE html> dice al browser che questo è HTML5 (la versione moderna).
+  Senza questa riga il browser entra in "quirks mode" e si comporta in modo imprevedibile.
+-->
+
+<html lang="it">
+<!--
+  <html> è l'elemento radice: contiene tutto.
+  lang="it" dice ai motori di ricerca e agli screen reader che la lingua è italiano.
+-->
+
+<head>
+<!--
+  <head> contiene informazioni SULLA pagina, non il contenuto visibile.
+  Il browser le legge ma non le mostra all'utente.
+-->
+
+  <!-- charset dice al browser come decodificare il testo.
+       UTF-8 supporta tutti i caratteri: accenti, emoji, caratteri non latini. -->
+  <meta charset="UTF-8">
+
+  <!-- viewport controlla come la pagina si ridimensiona su mobile.
+       width=device-width = usa la larghezza reale del dispositivo.
+       initial-scale=1 = non fare zoom automatico. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- il testo che appare nel tab del browser e nei risultati Google -->
+  <title>Luca Pasquarelli</title>
+
+  <!-- description: la riga di testo che Google mostra sotto il titolo nei risultati -->
+  <meta name="description" content="Software engineer a Firenze. Codice, fotografia, cinema, libri, musica.">
+
+  <!-- Google Fonts: carichiamo EB Garamond dall'esterno.
+       rel="preconnect" dice al browser di aprire la connessione con Google
+       in anticipo, ancora prima di scaricare il font — più veloce. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600&display=swap"
+        rel="stylesheet">
+  <!-- il nostro CSS. rel="stylesheet" dice al browser che tipo di file è.
+       href è il percorso: css/style.css significa "nella cartella css, il file style.css" -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<!--
+  <body> contiene tutto il contenuto visibile della pagina.
+  Gli elementi dentro body vengono renderizzati (disegnati) dal browser.
+-->
+
+  <!-- HEADER: l'intestazione della pagina.
+       <header> è semantico — comunica "questa è la testa della pagina".
+       Non è obbligatorio usarlo (potresti usare <div>) ma è buona pratica. -->
+  <header>
+    <h1>Luca Pasquarelli</h1>
+    <p>
+      Appassionato di fotografia, cinema, libri e musica, informatica e scienza.
+    </p>
+  </header>
+
+
+  <!-- SEZIONE LINK ---
+       <nav> = navigation: elemento semantico per i blocchi di navigazione.
+       <ul> = unordered list, <li> = list item.
+       Usare una lista per i link è corretto semanticamente: sono appunto una lista. -->
+  <nav>
+    <ul class="link-list">
+      <!-- <a href="..."> è il tag per i link.
+           target="_blank" apre il link in una nuova scheda.
+           rel="noopener" è una misura di sicurezza: impedisce alla pagina aperta
+           di accedere alla tua tramite JavaScript. -->
+      <li><a href="mailto:luca.pasquarelli.villa@gmail.com">email</a></li>
+      <li><a href="https://github.com/luhodaan" target="_blank" rel="noopener">github</a></li>
+      <li><a href="https://www.linkedin.com/in/luca-pasquarelli-061910212/" target="_blank" rel="noopener">linkedin</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- SEZIONE LAVORO -->
+  <section>
+    <!-- <h2> = titolo di secondo livello. Gerarchia: h1 → h2 → h3.
+         Non saltare livelli (es. da h1 a h3) — i motori di ricerca
+         usano questa gerarchia per capire la struttura della pagina. -->
+    <h2>Lavoro</h2>
+    <p>
+      Attualmente software engineer.
+      Mi interessa il confine tra ingegneria e impatto diretto sulle persone.
+    </p>
+    <p>
+      In passato ho lavorato a <a href="https://noi.bz.it/it" target="_blank" rel="noopener">NOI Techpark</a>
+      e studiato al Politecnico di Milano.
+    </p>
+  </section>
+
+
+  <!-- SEZIONE PROGETTI ---
+       Placeholder: aggiungerai i tuoi progetti qui.
+       La struttura è pensata per crescere: aggiungi un <li> per ogni progetto. -->
+  <section>
+    <h2>Progetti</h2>
+    <ul class="project-list">
+
+      <!-- ogni progetto: titolo linkato + descrizione breve -->
+      <li>
+        <a href="#" class="project-title">Nome del progetto</a>
+        <p class="project-desc">Breve descrizione — cosa fa, che tecnologie usa.</p>
+      </li>
+
+      <li>
+        <a href="#" class="project-title">Altro progetto</a>
+        <p class="project-desc">Descrizione. Puoi linkare il repo GitHub o una demo.</p>
+      </li>
+
+    </ul>
+  </section>
+
+
+  <!-- SEZIONE INTERESSI -->
+  <section>
+    <h2>Altro</h2>
+    <p>
+      Leggo molto.
+      Guardo con attenzione. Faccio fotografia.
+      Ascolto musica quasi sempre.
+    </p>
+  </section>
+
+
+  <!-- FOOTER: il piè di pagina.
+       <footer> è semantico come <header>.
+       <small> indica testo di importanza secondaria — perfetto per note e date. -->
+  <footer>
+    <small>Firenze, Italia — aggiornato 2026</small>
+  </footer>
+
+</body>
+</html>

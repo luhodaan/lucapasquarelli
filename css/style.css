@@ -1,0 +1,195 @@
+/* ============================================
+   style.css — lucapasquarelli.com
+   ============================================
+
+   Questo file contiene tutto lo stile della pagina.
+   È separato dall'HTML per due motivi:
+   1. puoi modificare l'aspetto senza toccare il contenuto
+   2. il browser lo mette in cache — caricamento più veloce
+*/
+
+
+/* --- RESET ---
+   I browser applicano stili di default (margini, padding, dimensioni font)
+   che variano tra Chrome, Firefox, Safari.
+   Questo blocco li azzera così partiamo da una base uniforme.
+*/
+*, *::before, *::after {
+  box-sizing: border-box; /* include padding e border nella larghezza totale */
+  margin: 0;
+  padding: 0;
+}
+
+
+/* --- VARIABILI CSS ---
+   :root è l'elemento radice della pagina (come <html>).
+   Le variabili definite qui sono disponibili ovunque nel file.
+   Se vuoi cambiare il colore del testo, cambi --color-text e si aggiorna tutto.
+   var(--nome) è come usarle.
+*/
+:root {
+  --color-bg:      #faf9f7;   /* sfondo: bianco caldo, non freddo */
+  --color-text:    #1a1a1a;   /* testo principale: quasi nero */
+  --color-muted:   #6b6b6b;   /* testo secondario: grigio medio */
+  --color-link:    #1a1a1a;   /* link: stesso colore del testo */
+  --color-hover:   #6b6b6b;   /* link al passaggio del mouse */
+
+  --font-body:     'EB Garamond', Georgia, serif;  /* font principale: elegante, leggibile */
+  --font-size:     18px;
+  --line-height:   1.2;
+
+  --max-width:     580px;     /* larghezza massima del contenuto */
+  --padding-x:     24px;      /* margine laterale su mobile */
+}
+
+
+/* --- BODY ---
+   body è il contenitore di tutto il contenuto visibile.
+   Qui impostiamo font, colori e dimensioni globali.
+*/
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+
+  /* centra il contenuto orizzontalmente */
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px var(--padding-x) 120px;
+}
+
+
+/* --- TIPOGRAFIA ---
+   h1, h2, p, small sono elementi HTML semantici.
+   "Semantico" significa che descrivono cosa sono i contenuti,
+   non come appaiono. h1 = titolo principale, p = paragrafo, ecc.
+*/
+h1 {
+  font-size: 1.1rem;       /* rem = relativo alla dimensione base del body */
+  font-weight: 400;        /* normale, non bold — scelta stilistica */
+  margin-bottom: 32px;
+}
+
+header h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 550;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-muted);
+  letter-spacing: 0.08em;  /* leggermente spaziato — usato per le etichette di sezione */
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  margin-top: 52px;
+}
+
+p {
+  margin-bottom: 5px;
+  color: var(--color-text);
+}
+
+small {
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
+
+/* --- LINK ---
+   a è l'elemento per i collegamenti ipertestuali.
+   text-decoration: none rimuove la sottolineatura di default.
+   transition rende il cambio di colore fluido (0.15s) invece che istantaneo.
+*/
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;   /* spazio tra testo e sottolineatura */
+  text-decoration-color: #ccc;  /* sottolineatura leggera di default */
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+a:hover {
+  color: var(--color-hover);
+  text-decoration-color: var(--color-hover);
+}
+
+
+/* --- SEZIONI ---
+   section è un elemento HTML5 semantico che raggruppa contenuti correlati.
+   Qui non fa molto visivamente — serve per organizzare il codice
+   e aiuta i motori di ricerca a capire la struttura della pagina.
+*/
+section {
+  margin-bottom: 8px;
+}
+
+
+/* --- LISTA LINK ---
+   ul = unordered list (lista non ordinata, senza numeri)
+   li = list item (elemento della lista)
+   list-style: none rimuove i pallini di default.
+*/
+.link-list {
+  list-style: none;
+  display: flex;         /* flex mette gli elementi in fila orizzontale */
+  flex-wrap: wrap;       /* va a capo se non ci sta tutto su una riga */
+  gap: 2px 20px;        /* spazio verticale 4px, orizzontale 20px */
+}
+
+.link-list li {
+  font-size: 0.9rem;
+}
+
+
+/* --- LISTA PROGETTI ---
+   Ogni progetto ha titolo, descrizione e link.
+   Separiamo i progetti con un bordo sottile sopra.
+*/
+.project-list {
+  list-style: none;
+}
+
+.project-list li {
+  padding: 16px 0;
+  border-top: 1px solid #e8e5e0;  /* linea separatrice leggera */
+}
+
+.project-list li:last-child {
+  border-bottom: 1px solid #e8e5e0;
+}
+
+.project-title {
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.project-desc {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+
+/* --- RESPONSIVE ---
+   @media è una "regola condizionale": il CSS dentro si applica
+   solo quando la schermata è larga meno di 600px (cioè mobile).
+   Su mobile riduciamo il padding e la dimensione del testo.
+*/
+@media (max-width: 600px) {
+  body {
+    padding: 48px var(--padding-x) 80px;
+    font-size: 17px;
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+}
