@@ -193,3 +193,23 @@ section {
     margin-top: 40px;
   }
 }
+
+/* --- BOTTONE PODCAST ---
+   Stesso verdolino usato come sfondo di podcast.html,
+   qui usato come background di un elemento invece che della pagina intera. */
+.btn-podcast {
+  display: inline-block;
+  background-color: #62b37e;
+  border: 2px solid #000;
+  border-radius: 999px;
+  color: var(--color-text);
+  padding: 8px 18px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-top: 16px;
+  transition: background-color 0.15s;
+}
+
+.btn-podcast:hover {
+  background-color: #1aa34a;
+}

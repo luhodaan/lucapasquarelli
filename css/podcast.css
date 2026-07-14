@@ -1,0 +1,27 @@
+/* ============================================
+   podcast.css — pagina "xtml"
+   ============================================
+
+   Questo file NON sostituisce style.css: lo si carica DOPO
+   nell'<head>, quindi le sue regole hanno la precedenza
+   solo dove ridefiniscono le stesse variabili/proprietà.
+   Tutto il resto (font, spaziature, link-list, project-list...)
+   arriva già da style.css.
+*/
+
+:root {
+  /* --color-bg passa dal bianco caldo (#faf9f7) a un verde
+     molto chiaro, una via di mezzo tra quel bianco e il verde
+     Spotify (#1DB954). Qui restiamo lontani dalla saturazione
+     piena di Spotify per mantenere il tono minimal del sito. */
+  --color-bg: #eef4ee;
+}
+
+header h1 {
+  color: #7dda9e;
+  -webkit-text-stroke: 1.5px #085b1b;
+}
+
+nav {
+  margin-top: 24px;
+}
