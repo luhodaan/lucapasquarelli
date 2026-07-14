@@ -9,13 +9,13 @@
    arriva già da style.css.
 */
 
-:root {
+/* :root {
   /* --color-bg passa dal bianco caldo (#faf9f7) a un verde
      molto chiaro, una via di mezzo tra quel bianco e il verde
      Spotify (#1DB954). Qui restiamo lontani dalla saturazione
      piena di Spotify per mantenere il tono minimal del sito. */
-  --color-bg: #eef4ee;
-}
+  /* --color-bg: #eef4ee;
+} */ 
 
 header h1 {
   color: #7dda9e;
@@ -24,4 +24,9 @@ header h1 {
 
 nav {
   margin-top: 24px;
+}
+
+.logo-title {
+  width: 300px;
+  height: auto;
 }
