@@ -213,3 +213,20 @@ section {
 .btn-podcast:hover {
   background-color: #1aa34a;
 }
+
+.tm-machine {
+  display: inline-block;
+  background-color: #c0e3e98c;
+  border: 2px solid #0a0b0bd6;
+  border-radius: 999px;
+  color: var(--color-text);
+  padding: 8px 18px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-top: 16px;
+  transition: background-color 0.15s;
+}
+
+.tm-machine:hover {
+  background-color: #b7d9da;
+}

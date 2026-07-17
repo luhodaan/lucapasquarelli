@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> My Time Dashboard</title>
+  <meta name="description" content="Tracciamento ore per ambito nel tempo.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>My Time Machine</h1>
+    <p>Tracking activities</p>
+  </header>
+
+  <nav>
+    <ul class="link-list">
+      <li><a href="index.html">home</a></li>
+    </ul>
+  </nav>
+
+  <!-- SEZIONE TABELLA: dove finiranno gli ambiti aggregati.
+       <tbody id="summary-table-body"> è vuoto apposta: JavaScript
+       ci inserirà le righe una per una, leggendole dal backend. -->
+  <section>
+    <h2>Dettaglio per ambito</h2>
+    <table id="summary-table">
+      <thead>
+        <tr>
+          <th>Ambito</th>
+          <th>Ore totali</th>
+        </tr>
+      </thead>
+      <tbody id="summary-table-body">
+        <!-- righe inserite dinamicamente da JavaScript -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SEZIONE FORM: dove inserirai manualmente una nuova entry.
+       Non c'è ancora nessuna azione collegata: il bottone per ora non fa nulla. -->
+  <section>
+    <h2>Aggiungi ore</h2>
+    <form id="entry-form">
+      <input type="text" id="input-ambito" placeholder="Ambito (es. Podcast)" required>
+      <input type="number" id="input-ore" placeholder="Ore" step="1" required>
+      <button type="submit">Salva</button>
+    </form>
+  </section>
+
+
+
+  <footer>
+    <small>Firenze, Italia — aggiornato 2026</small>
+  </footer>
+
+</body>
+</html>

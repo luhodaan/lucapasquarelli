@@ -1,0 +1,27 @@
+/* ============================================
+   dashboard.css — pagina dashboard ore
+   ============================================
+   Caricato dopo style.css: eredita reset, font, colori,
+   e qui aggiungiamo solo ciò che è specifico di questa pagina.
+*/
+
+#summary-table {
+  width: 100%;
+  border-collapse: collapse; /* le celle condividono un unico bordo, invece di uno doppio per cella */
+  margin-top: 8px;
+}
+
+#summary-table th,
+#summary-table td {
+  text-align: left;
+  padding: 10px 12px;         /* qui torna lo spazio interno che il reset aveva azzerato */
+  border-bottom: 1px solid #e8e5e0;  /* stessa linea sottile che già usi in .project-list */
+}
+
+#summary-table th {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
