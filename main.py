@@ -47,6 +47,18 @@ def get_entries():
     conn.close()
     return [dict(row) for row in rows]
 
+@app.get("/entries/sumup")
+def get_hsum_by_subject():
+    conn = sqlite3.connect('entries.db')
+    conn.row_factory = sqlite3.Row   
+    cursor = conn.cursor()
+    cursor.execute("SELECT subject, SUM(hours) as total_hours FROM entries GROUP BY subject")
+    rows = cursor.fetchall() 
+    conn.close()
+    return [dict(row) for row in rows]
+
+
+
 @app.post("/entries")
 def create_entry(entry: Entry):
     conn = sqlite3.connect('entries.db')
@@ -56,3 +68,7 @@ def create_entry(entry: Entry):
     conn.commit()
     conn.close()
     return {"status": "ok" }
+
+    
+
+    
