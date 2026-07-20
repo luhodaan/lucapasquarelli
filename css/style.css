@@ -230,3 +230,9 @@ section {
 .tm-machine:hover {
   background-color: #b7d9da;
 }
+
+.button-row {
+  display: flex;
+  align-items: center;  /* keeps both vertically centered, in case they end up different heights */
+  gap: 12px;             /* horizontal space between them, cleaner than margin on each */
+}
