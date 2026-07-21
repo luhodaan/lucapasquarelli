@@ -2,3 +2,6 @@
 
 - Launching the backend locally:
 uvicorn main:app --reload
+
+- api address:
+https://lucapasquarelligithubio.fastapicloud.dev/docs

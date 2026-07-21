@@ -15,7 +15,7 @@ async function loadSummary() {
   // che rappresenta "un risultato che arriverà, ma non subito".
   // "await" mette in pausa QUESTA funzione (non tutto il programma)
   // finché la risposta non arriva, poi continua con quello che segue.
-  const response = await fetch(`${API_URL}/entries/sumup`);
+  const response = await fetch(`${API_URL}/entries/summary`);
 
   // response è la risposta HTTP grezza (status code, headers...).
   // .json() legge il BODY della risposta e lo converte da testo JSON
