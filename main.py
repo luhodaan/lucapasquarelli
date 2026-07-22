@@ -1,4 +1,5 @@
 import os
+from contextlib import asynccontextmanager
 from datetime import date as Date
 
 import psycopg
@@ -19,7 +20,23 @@ DATABASE_URL = os.environ["DATABASE_URL"]
 # non ha alcun motivo di partire.
 API_KEY = os.environ["API_KEY"]
 
-app = FastAPI()
+
+# --- LIFESPAN ---
+# Il "lifespan" è una funzione speciale che FastAPI esegue automaticamente:
+# tutto ciò che sta PRIMA di `yield` gira UNA volta all'avvio dell'app,
+# tutto ciò che sta DOPO gira UNA volta allo spegnimento.
+# Mettiamo qui init_db() (invece che a import-time) così, se il database
+# non risponde, l'errore viene loggato ma il processo web parte lo stesso.
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    try:
+        init_db()
+    except Exception as e:
+        print(f"init_db failed: {e}")  # logga l'errore ma non uccide l'app
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -54,9 +71,6 @@ def init_db():
     # (numero che si auto-incrementa), sintassi diversa.
     conn.commit()
     conn.close()
-
-
-init_db()
 
 
 @app.get("/entries")
