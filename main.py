@@ -3,7 +3,7 @@ from datetime import date as Date
 
 import psycopg
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -17,6 +17,7 @@ DATABASE_URL = os.environ["DATABASE_URL"]
 # chiaro se la variabile manca, invece di scoprirlo più tardi con un errore di connessione
 # criptico — preferibile a os.environ.get(...) qui, perché senza DATABASE_URL l'app
 # non ha alcun motivo di partire.
+API_KEY = os.environ["API_KEY"]
 
 app = FastAPI()
 
@@ -82,7 +83,9 @@ def get_summary():
 
 
 @app.post("/entries")
-def create_entry(entry: TimeEntry):
+def create_entry(entry: TimeEntry, x_api_key: str = Header(...)):
+    if x_api_key != API_KEY:
+        raise HTTPException(status_code=401, detail="Invalid API key")
     conn = psycopg.connect(DATABASE_URL)
     conn.execute(
         "INSERT INTO entries (subject, hours, date) VALUES (%s, %s, %s)",
