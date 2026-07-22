@@ -48,16 +48,16 @@
     </table>
   </section>
 
-  <!-- SEZIONE FORM: dove inserirai manualmente una nuova entry.
-       Non c'è ancora nessuna azione collegata: il bottone per ora non fa nulla. -->
+  <!-- SEZIONE FOGLIO: embed del Google Sheet pubblicato.
+       L'iframe è avvolto in un contenitore .sheet-widget che gli dà
+       angoli arrotondati, bordo leggero e ombra morbida. -->
   <section>
-    <h2>Aggiungi ore</h2>
-    <form id="entry-form">
-      <input type="password" id="input-apikey" placeholder="API key">
-      <input type="text" id="input-ambito" placeholder="Ambito (es. Podcast)" required>
-      <input type="number" id="input-ore" placeholder="Ore" step="1" required>
-      <button type="submit">Salva</button>
-    </form>
+    <div class="sheet-widget">
+      <iframe
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSAfC5HiWnx1ixplWZZkpjJybS49m5eA_16fd2fwN3MXUr96txE7bGmW-7YGAK15vP8krb4hBBuHUz3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+        title="Foglio ore"
+        loading="lazy"></iframe>
+    </div>
   </section>
 
 
@@ -67,6 +67,5 @@
   </footer>
 
 
-  <script src="js/dashboard.js"></script>  
 </body>
 </html>

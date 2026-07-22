@@ -25,3 +25,26 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+
+
+/* --- WIDGET FOGLIO (iframe Google Sheets) ---
+   Contenitore che rende l'embed più piccolo, arrotondato e "a scheda":
+   - overflow: hidden ritaglia gli angoli dell'iframe seguendo il border-radius
+   - il border-radius genero e l'ombra morbida danno l'aspetto "widget"
+*/
+.sheet-widget {
+  max-width: 400px;                 /* più stretto e compatto */
+  margin: 12px auto 0;              /* centrato orizzontalmente */
+  border: 1px solid #e8e5e0;        /* stessa linea leggera del resto */
+  border-radius: 16px;              /* angoli belli tondi */
+  overflow: hidden;                 /* ritaglia l'iframe agli angoli */
+  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);  /* ombra morbida e diffusa */
+}
+
+.sheet-widget iframe {
+  display: block;   /* rimuove lo spazietto sotto tipico degli inline */
+  width: 100%;
+  /*height: 360px;    /* più basso dei 600px originali */
+  border: 0;        /* via il bordo di default dell'iframe */
+}
