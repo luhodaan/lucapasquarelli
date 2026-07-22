@@ -1,7 +1,7 @@
 // URL base del backend. Averlo in una costante evita di riscrivere
 // "http://localhost:8000" in ogni funzione — se un giorno il backend
 // gira altrove, cambi solo questa riga.
-const API_URL = "https://time-machine-api.fastapicloud.dev/";
+const API_URL = "https://time-machine-api.fastapicloud.dev";
 
 
 // --- FUNZIONE 1: leggere i dati aggregati e disegnare la tabella ---
