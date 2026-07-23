@@ -46,11 +46,11 @@ header h1 {
 .sheet-widget {
   max-width: 400px;                 /* più stretto e compatto */
   margin: 12px auto 0;              /* centrato orizzontalmente */
-  border: 1px solid #e8e5e0;        /* stessa linea leggera del resto */
-  border-radius: 16px;              /* angoli belli tondi */
+  border: 1px solid var(--color-border);   /* bordo coerente coi token */
+  border-radius: var(--radius-lg);          /* angoli tondi dalla scala condivisa */
   overflow: hidden;                 /* ritaglia l'iframe agli angoli */
   background-color: #e3fadf;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);  /* ombra morbida e diffusa */
+  box-shadow: var(--shadow-md);     /* ombra morbida dai token */
 }
 
 .sheet-widget iframe {

@@ -28,17 +28,40 @@
    var(--nome) è come usarle.
 */
 :root {
-  --color-bg:      #faf9f7;   /* sfondo: bianco caldo, non freddo */
-  --color-text:    #1a1a1a;   /* testo principale: quasi nero */
-  --color-muted:   #6b6b6b;   /* testo secondario: grigio medio */
-  --color-link:    #1a1a1a;   /* link: stesso colore del testo */
-  --color-hover:   #6b6b6b;   /* link al passaggio del mouse */
+  /* --- COLORI ---
+     Base neutra e pulita (stile moderno) + un colore accento vivace
+     da usare con parsimonia su link/hover e, più avanti, sui bottoni. */
+  --color-bg:      #ffffff;   /* sfondo: bianco pieno, più "app" che "carta" */
+  --color-surface: #faf9f7;   /* superfici leggermente staccate (card, widget) */
+  --color-text:    #1d1d1f;   /* testo principale: quasi nero, tono caldo */
+  --color-muted:   #6e6e73;   /* testo secondario: grigio medio */
+  --color-border:  #ececec;   /* linee e bordi molto leggeri */
+  --color-link:    #1d1d1f;   /* link: colore del testo, l'accento arriva in hover */
+  --color-hover:   #5b5bff;   /* accento: indaco/violaceo moderno */
+  --color-accent:  #5b5bff;   /* stesso accento, riusabile su bottoni/dettagli */
 
-  --font-body:     'EB Garamond', Georgia, serif;  /* font principale: elegante, leggibile */
-  --font-size:     18px;
-  --line-height:   1.2;
+  /* --- TIPOGRAFIA ---
+     Passiamo da un serif editoriale a un sans-serif moderno.
+     Inter è già caricato nelle pagine; la lista di fallback usa i font
+     di sistema così, se Inter non è pronto, il testo resta comunque pulito. */
+  --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-heading:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-size:     17px;
+  --line-height:   1.6;       /* interlinea più ariosa, come nei siti moderni */
 
-  --max-width:     580px;     /* larghezza massima del contenuto */
+  /* --- FORME ---
+     Scala di arrotondamenti riutilizzabile: dal piccolo al "pillola". */
+  --radius-sm:     8px;
+  --radius-md:     14px;
+  --radius-lg:     20px;
+  --radius-pill:   999px;
+
+  /* --- OMBRE ---
+     Ombre morbide e diffuse, non nette: danno profondità senza pesare. */
+  --shadow-sm:     0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md:     0 6px 20px rgba(0, 0, 0, 0.06);
+
+  --max-width:     640px;     /* un filo più largo, respira meglio col sans */
   --padding-x:     24px;      /* margine laterale su mobile */
 }
 
@@ -53,6 +76,10 @@ body {
   font-family: var(--font-body);
   font-size: var(--font-size);
   line-height: var(--line-height);
+
+  /* rende il sans-serif più nitido e uniforme su Mac/WebKit */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   /* centra il contenuto orizzontalmente */
   max-width: var(--max-width);
@@ -73,26 +100,34 @@ h1 {
 }
 
 header h1 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 2rem;
-    font-weight: 550;
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;   /* titoli più compatti, come nei siti moderni */
+    margin-bottom: 10px;
+}
+
+/* Sottotitolo sotto il titolo dell'header: più grande e in grigio,
+   come le "tagline" introduttive dei siti moderni. */
+header p {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin-bottom: 0;
 }
 
 h2 {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--color-muted);
-  letter-spacing: 0.08em;  /* leggermente spaziato — usato per le etichette di sezione */
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  margin-top: 52px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);       /* non più grigio muted: titoli veri, ben leggibili */
+  letter-spacing: -0.01em;        /* niente più maiuscoletto spaziato */
+  margin-bottom: 14px;
+  margin-top: 56px;
 }
 
 p {
-  margin-bottom: 5px;
+  margin-bottom: 12px;            /* più respiro tra i paragrafi */
   color: var(--color-text);
 }
 
@@ -111,13 +146,13 @@ a {
   color: var(--color-link);
   text-decoration: underline;
   text-underline-offset: 3px;   /* spazio tra testo e sottolineatura */
-  text-decoration-color: #ccc;  /* sottolineatura leggera di default */
+  text-decoration-color: var(--color-border);  /* sottolineatura leggera di default */
   transition: color 0.15s, text-decoration-color 0.15s;
 }
 
 a:hover {
   color: var(--color-hover);
-  text-decoration-color: var(--color-hover);
+  text-decoration-color: var(--color-hover);   /* l'accento compare al passaggio del mouse */
 }
 
 
@@ -127,7 +162,7 @@ a:hover {
    e aiuta i motori di ricerca a capire la struttura della pagina.
 */
 section {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
 }
 
 
@@ -147,34 +182,80 @@ section {
   font-size: 0.9rem;
 }
 
+/* --- CHIP "TORNA ALLA HOME" ---
+   Il link "home" nelle sottopagine: da link nudo a piccola pillola
+   con freccia, bordo tenue, ombra leggera e micro-lift in hover. */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
 
-/* --- LISTA PROGETTI ---
-   Ogni progetto ha titolo, descrizione e link.
-   Separiamo i progetti con un bordo sottile sopra.
-*/
+.back-link::before {
+  content: "\2190";   /* freccia ← inserita via CSS, così l'HTML resta pulito */
+}
+
+.back-link:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: #dcdce8;
+  color: var(--color-text);   /* niente accento sul testo: l'effetto è tutto nella pillola */
+}
+
+
+/* --- LISTA PROGETTI (a schede) ---
+   Ogni progetto è una "card": bordo morbido, angoli arrotondati,
+   ombra leggera e un piccolo lift al passaggio del mouse. */
 .project-list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;              /* spazio uniforme tra le schede */
 }
 
 .project-list li {
-  padding: 16px 0;
-  border-top: 1px solid #e8e5e0;  /* linea separatrice leggera */
+  padding: 18px 20px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.project-list li:last-child {
-  border-bottom: 1px solid #e8e5e0;
+.project-list li:hover {
+  transform: translateY(-2px);      /* la scheda si solleva leggermente */
+  box-shadow: var(--shadow-md);     /* e l'ombra si allarga */
+  border-color: #dcdce8;            /* bordo con un tocco di accento */
 }
 
 .project-title {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 600;
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  text-decoration: none;            /* niente sottolineatura: è un titolo, non un link inline */
+  color: var(--color-text);
+  transition: color 0.15s ease;
+}
+
+.project-title:hover {
+  color: var(--color-accent);       /* l'accento compare solo sul titolo in hover */
 }
 
 .project-desc {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--color-muted);
   margin: 0;
+  line-height: 1.5;
 }
 
 
@@ -190,49 +271,57 @@ section {
   }
 
   h2 {
-    margin-top: 40px;
+    margin-top: 44px;
   }
 }
 
-/* --- BOTTONE PODCAST ---
-   Stesso verdolino usato come sfondo di podcast.html,
-   qui usato come background di un elemento invece che della pagina intera. */
-.btn-podcast {
-  display: inline-block;
-  background-color: #62b37e;
-  border: 2px solid #000;
-  border-radius: 999px;
+/* --- BOTTONI ICONA (podcast / time machine) ---
+   Solo un'emoji dentro: li rendiamo pulsanti circolari, con bordo
+   tenue, ombra morbida e un piccolo "lift" al passaggio del mouse. */
+.btn-podcast,
+.tm-machine {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 0, 0, 0.06);   /* bordo appena accennato, non più nero netto */
   color: var(--color-text);
-  padding: 8px 18px;
   text-decoration: none;
-  font-size: 0.9rem;
-  margin-top: 16px;
-  transition: background-color 0.15s;
+  font-size: 1.25rem;
+  line-height: 1;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+/* Effetto comune in hover: si solleva di 2px e l'ombra si allarga. */
+.btn-podcast:hover,
+.tm-machine:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);   /* evita che l'accento dei link generici tinga l'icona */
+}
+
+.btn-podcast {
+  background-color: #d8f3e3;   /* verde tenue e moderno */
 }
 
 .btn-podcast:hover {
-  background-color: #1aa34a;
+  background-color: #c4ecd5;
 }
 
 .tm-machine {
-  display: inline-block;
-  background-color: #c0e3e98c;
-  border: 2px solid #0a0b0bd6;
-  border-radius: 999px;
-  color: var(--color-text);
-  padding: 8px 18px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  margin-top: 16px;
-  transition: background-color 0.15s;
+  background-color: #d5eef2;   /* azzurro tenue */
 }
 
 .tm-machine:hover {
-  background-color: #b7d9da;
+  background-color: #c3e6ec;
 }
 
 .button-row {
   display: flex;
-  align-items: center;  /* keeps both vertically centered, in case they end up different heights */
-  gap: 12px;             /* horizontal space between them, cleaner than margin on each */
+  align-items: center;   /* icone allineate verticalmente */
+  gap: 12px;             /* spazio tra i due pulsanti */
+  margin-top: 20px;
 }
