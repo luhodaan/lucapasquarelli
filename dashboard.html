@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title> My Time Dashboard</title>
+  <title>My Time Machine</title>
   <meta name="description" content="Tracciamento ore per ambito nel tempo.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,15 +24,12 @@
     <p>Tracking activities</p>
   </header>
 
-  <nav>
-    <ul class="link-list">
-      <li><a href="index.html">home</a></li>
-    </ul>
-  </nav>
 
-  <!-- SEZIONE TABELLA: dove finiranno gli ambiti aggregati.
-       <tbody id="summary-table-body"> è vuoto apposta: JavaScript
-       ci inserirà le righe una per una, leggendole dal backend. -->
+  <section class="button-row">
+   <a href="index.html" class="tm-machine"> home </a>
+  </section>
+
+  <!-- TABELLA: righe inserite dinamicamente da JavaScript -->
   <section>
     <h2>Dettaglio per ambito</h2>
     <table id="summary-table">
@@ -43,29 +40,15 @@
         </tr>
       </thead>
       <tbody id="summary-table-body">
-        <!-- righe inserite dinamicamente da JavaScript -->
+        <tr><td colspan="2">Caricamento…</td></tr>
       </tbody>
     </table>
   </section>
-
-  <!-- SEZIONE FOGLIO: embed del Google Sheet pubblicato.
-       L'iframe è avvolto in un contenitore .sheet-widget che gli dà
-       angoli arrotondati, bordo leggero e ombra morbida. -->
-  <section>
-    <div class="sheet-widget">
-      <iframe
-        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSAfC5HiWnx1ixplWZZkpjJybS49m5eA_16fd2fwN3MXUr96txE7bGmW-7YGAK15vP8krb4hBBuHUz3/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
-        title="Foglio ore"
-        loading="lazy"></iframe>
-    </div>
-  </section>
-
-
 
   <footer>
     <small>Firenze, Italia — aggiornato 2026</small>
   </footer>
 
-
+  <script src="js/dashboard.js"></script>
 </body>
 </html>

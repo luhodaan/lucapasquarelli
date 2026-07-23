@@ -38,7 +38,7 @@
   border: 1px solid #e8e5e0;        /* stessa linea leggera del resto */
   border-radius: 16px;              /* angoli belli tondi */
   overflow: hidden;                 /* ritaglia l'iframe agli angoli */
-  background-color: #fff;
+  background-color: #e3fadf;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);  /* ombra morbida e diffusa */
 }
 
