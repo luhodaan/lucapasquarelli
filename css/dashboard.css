@@ -5,6 +5,17 @@
    e qui aggiungiamo solo ciò che è specifico di questa pagina.
 */
 
+body {
+  background-color: var(--color-bg-dashboard);
+  color: var(--color-text);
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+}
+
+header h1 {
+  font-family: "Borel", sans-serif;
+}
+
 #summary-table {
   width: 100%;
   border-collapse: collapse; /* le celle condividono un unico bordo, invece di uno doppio per cella */
