@@ -37,8 +37,8 @@
   --color-muted:   #6e6e73;   /* testo secondario: grigio medio */
   --color-border:  #ececec;   /* linee e bordi molto leggeri */
   --color-link:    #1d1d1f;   /* link: colore del testo, l'accento arriva in hover */
-  --color-hover:   #5b5bff;   /* accento: indaco/violaceo moderno */
-  --color-accent:  #5b5bff;   /* stesso accento, riusabile su bottoni/dettagli */
+  --color-hover:   rgb(248, 28, 224);   /* accento: indaco/violaceo moderno */
+  --color-accent:  rgb(248, 28, 224);   /* stesso accento, riusabile su bottoni/dettagli */
 
   /* --- TIPOGRAFIA ---
      Passiamo da un serif editoriale a un sans-serif moderno.
@@ -118,12 +118,26 @@ header p {
 }
 
 h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-text);       /* non più grigio muted: titoli veri, ben leggibili */
   letter-spacing: -0.01em;        /* niente più maiuscoletto spaziato */
   margin-bottom: 14px;
   margin-top: 56px;
+}
+
+/* Pallino accento indaco davanti a ogni titolo di sezione: dettaglio
+   discreto ma riconoscibile, nello spirito degli accenti di Tally. */
+h2::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
 }
 
 p {
@@ -153,6 +167,24 @@ a {
 a:hover {
   color: var(--color-hover);
   text-decoration-color: var(--color-hover);   /* l'accento compare al passaggio del mouse */
+}
+
+/* Selezione del testo con una velatura d'indaco, invece del blu di sistema. */
+::selection {
+  background-color: rgba(91, 91, 255, 0.18);
+  color: var(--color-text);
+}
+
+/* Focus da tastiera: contorno indaco ben visibile su tutti gli elementi
+   interattivi. Migliora l'accessibilità e resta in tema col brand. */
+a:focus-visible,
+.btn-podcast:focus-visible,
+.tm-machine:focus-visible,
+.back-link:focus-visible,
+.project-title:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 
@@ -207,8 +239,8 @@ section {
 .back-link:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-  border-color: #dcdce8;
-  color: var(--color-text);   /* niente accento sul testo: l'effetto è tutto nella pillola */
+  border-color: var(--color-accent);   /* bordo indaco in hover */
+  color: var(--color-accent);          /* anche testo e freccia diventano indaco */
 }
 
 
@@ -308,15 +340,15 @@ section {
 }
 
 .btn-podcast:hover {
-  background-color: #c4ecd5;
+  background-color: #8ff0b9;
 }
 
 .tm-machine {
-  background-color: #d5eef2;   /* azzurro tenue */
+  background-color: rgb(245, 151, 234);   /* azzurro tenue */
 }
 
 .tm-machine:hover {
-  background-color: #c3e6ec;
+  background-color: rgb(250, 96, 232);
 }
 
 .button-row {
